@@ -26,6 +26,7 @@ function searchReposReducer (prevState=initialState, action) {
             newRepos = action.data.items;
             newState.repos = newRepos;
             newState.loading = false;
+            newState.searchText='';
             return newState;
         }
         case types.FETCH_REPOS_ERROR: {

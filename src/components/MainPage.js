@@ -14,7 +14,6 @@ class MainPage extends Component {
         return (
             <div className="searchForRepos container">
                 <form className='searchBar' onSubmit={this.handleSubmit}>
-                    <p className="text-in-search">Search for any Github repository!</p>
                     <div className="search-button">
                         <input
                             className="search-bar"
@@ -24,7 +23,7 @@ class MainPage extends Component {
                             onChange={this.handleChange}
                             value={this.props.searchText}
                         />
-                        <input id='button' className="addCommentButton" type='submit' value='Search' />
+                        <input id='button' className="searchButton" type='submit' value='Search' />
                     </div>
 
                 </form>
