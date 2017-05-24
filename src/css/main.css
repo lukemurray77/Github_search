@@ -8,3 +8,19 @@
 .octicon {
     fill: currentColor;
 }
+
+.searchBar {
+    margin-top: 30px;
+    font-size: 1em;
+    padding: 20px;
+    border-top: 1px solid #e1e4e8;
+}
+
+.search-bar {
+    width: 40%;
+    height: 25px;
+}
+
+.text-in-search {
+    margin-bottom: 20px;
+}

@@ -5,34 +5,38 @@ import ReposList from './ReposList';
 
 
 class MainPage extends Component {
-    constructor(props){ 
+    constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    render () {
+    render() {
         return (
-            <div className="commentBox">
+            <div className="searchForRepos container">
                 <form className='searchBar' onSubmit={this.handleSubmit}>
-                    <input
-                        className="search-bar"
-                        id='search-repos'
-                        type='text'
-                        placeholder='Search for repositories..'
-                        onChange={this.handleChange}
-                        value={this.props.searchText}
-                    />
-                    <input id='button' className="addCommentButton" type='submit' value='Search' />
+                    <p className="text-in-search">Search for any Github repository!</p>
+                    <div className="search-button">
+                        <input
+                            className="search-bar"
+                            id='search-repos'
+                            type='text'
+                            placeholder='Search for repositories..'
+                            onChange={this.handleChange}
+                            value={this.props.searchText}
+                        />
+                        <input id='button' className="addCommentButton" type='submit' value='Search' />
+                    </div>
+
                 </form>
-                <ReposList repos={this.props.repos}/>
+                <ReposList repos={this.props.repos} />
 
             </div>
         );
     }
-    handleChange (e) {
+    handleChange(e) {
         this.props.updateSearchText(e.target.value);
     }
-    handleSubmit (e) {
+    handleSubmit(e) {
         e.preventDefault();
         if (this.props.searchText) this.props.fetchRepos(this.props.searchText);
 
