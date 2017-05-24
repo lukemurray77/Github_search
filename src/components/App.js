@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-
-const App = React.createClass({
-    render: function() {
+class App extends Component {
+    render () {
         return (
-            <h1>hello</h1>
-        )
+            <div>
+                <div className='mainDiv'></div>
+                {this.props.children}
+            </div>
+        );
     }
-})
+}
 
 export default App;

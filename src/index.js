@@ -8,13 +8,20 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
-// import reducer from './reducer/index.reducer';
-
+import MainPage from './components/MainPage';
+import UserRepo from './components/UserRepo';
+import reducer from './reducers/index.reducer';
 import 'bulma/css/bulma.css';
-import 'font-awesome/css/font-awesome.css';
 
 
-// const logger = createLogger();
-// const store = createStore(reducer, applyMiddleware(thunk, logger));
+const logger = createLogger();
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}>
+    <Router history={browserHistory}>
+        <Route path='/' component={App} >
+            <IndexRoute component={MainPage} />
+            <Route path=':member/:userrepo' component={UserRepo}/>
+        </Route>
+    </Router>
+</Provider>, document.getElementById('root'));
