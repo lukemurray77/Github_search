@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import moment from 'moment';
+import { modalClose, modalOpen } from '../actions/modal-open';
+import Modal from 'react-modal';
 
 class Repo extends Component {
+    constructor(props) {
+        super(props)
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
     render() {
         const newDate = moment(new Date());
         const oldDate = moment(this.props.time);
@@ -22,22 +30,40 @@ class Repo extends Component {
                 <div className="column">
                     <p>{this.props.language}</p>
                     {stars}
+                    <button onClick={this.handleOpenModal}>More Info</button>
+                    <Modal
+                        isOpen={this.props.isOpen}
+                    >
+                        <button onClick={this.handleCloseModal}>Close Modal</button>
+                    </Modal>
                 </div>
 
             </div>
         );
     }
+    handleOpenModal() {
+        this.props.openModal();
+    }
+    handleCloseModal() {
+        this.props.closeModal();
+    }
 }
 
-export default Repo;
+function mapStateToProps(state) {
+    return {
+        isOpen: state.modalOpen.isOpen
+    };
+}
 
+function mapDispatchToProps(dispatch) {
+    return {
+        openModal: function () {
+            dispatch(modalOpen());
+        },
+        closeModal: function () {
+            dispatch(modalClose());
+        }
+    };
+}
 
-/*
-<Link to={pathToRepo}>
-                    <div className='box'>
-                        {this.props.name}
-                        {this.props.description}
-                        {this.props.url}
-                        {this.props.time}
-                    </div>
-                </Link>*/
+export default connect(mapStateToProps, mapDispatchToProps)(Repo);

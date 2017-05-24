@@ -13,7 +13,7 @@ export function fetchAllRepos(searchText) {
     return function (dispatch) {
         dispatch(fetchReposRequest())
         axios
-            .get(`${ROOT}/search/repositories?q=${searchText}`)
+            .get(`${ROOT}/search/repositories?q=${searchText}&sort=stars&order=desc`)
             .then(res => {
                 console.log(res.data.items)
                 dispatch(fetchReposSuccess(res.data));
