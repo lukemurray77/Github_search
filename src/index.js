@@ -13,6 +13,7 @@ import UserRepo from './components/UserRepo';
 import reducer from './reducers/index.reducer';
 import 'bulma/css/bulma.css';
 import './css/main.css';
+import './css/font-awesome.css';
 
 const logger = createLogger();
 const store = createStore(reducer, applyMiddleware(thunk, logger));

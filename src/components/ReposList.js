@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Repo from './Repo';
-import { Link } from 'react-router';
+
 
 
 class ReposList extends Component {
-    render() {
-        let numberOfRepos= this.props.repos.length;
-        if (!numberOfRepos) {
-            numberOfRepos = '';
-        } else 
-        numberOfRepos= `${this.props.repos.length} repository results`;
+    render () {
+        const numberOfRepos = this.props.repos.length ? `${this.props.repos.length} repository results`: '';
+
         return (
             <div className="container">
                 <div className="numberOfRepos">
@@ -26,8 +23,10 @@ class ReposList extends Component {
                                     name={repo.name}
                                     time={repo.updated_at}
                                     user={repo.owner.login}
+                                    language={repo.language}
+                                    stars={repo.stargazers_count}
                                 />
-                        )
+                        );
                     })}
                 </ul>
             </div>

@@ -7,8 +7,9 @@ class Repo extends Component {
         const newDate = moment(new Date());
         const oldDate = moment(this.props.time);
         const lastUpdate = newDate.diff(oldDate, 'days');
-
         const pathToRepo = `/${this.props.user}/${this.props.name}`
+        const stars = this.props.stars ? <p><i className="fa fa-star star" aria-hidden="true"></i> {this.props.stars}</p> : '';
+
         return (
             <div className="columns each-repo">
                 <div className="column is-three-quarters">
@@ -19,7 +20,8 @@ class Repo extends Component {
                     <p className="last-updated">Last updated {lastUpdate} days ago.</p>
                 </div>
                 <div className="column">
-                    JavaScript
+                    <p>{this.props.language}</p>
+                    {stars}
                 </div>
 
             </div>
