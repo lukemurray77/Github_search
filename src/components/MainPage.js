@@ -11,7 +11,6 @@ class MainPage extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     render () {
-        console.log(this.props.repos)
         return (
             <div className="commentBox">
                 <form className='searchBar' onSubmit={this.handleSubmit}>
