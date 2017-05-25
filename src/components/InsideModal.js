@@ -13,18 +13,23 @@ class InsideModal extends Component {
     render() {
         return (
             <div>
-                <Button
-                    bsStyle="primary"
-                    onClick={this.handleOpenModal}
-                >
+                <Button bsStyle="primary" onClick={this.handleOpenModal}>
                     More Info!
-                        </Button>
+                </Button>
 
                 <Modal show={this.props.isOpen} onHide={this.handleCloseModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>{this.props.name}</Modal.Title>
+                    <Modal.Header>
+                        <Modal.Title>
+                            <div>
+                            <img src={this.props.avatar} alt=""/>
+                            {this.props.name}/{this.props.user}
+                            </div>
+                        </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <p>Number of forks: {this.props.forks}</p>
+                        <p>Number of issues: {this.props.open_issues}</p>
+                        <p>Number of stars: {this.props.stars}</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.handleCloseModal}>Close</Button>

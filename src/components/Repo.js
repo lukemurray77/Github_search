@@ -26,7 +26,18 @@ class Repo extends Component {
                 <div className="column">
                     <p>{this.props.language}</p>
                     {stars}
-                    <InsideModal />
+                    <InsideModal
+                        description={this.props.description}
+                        url={this.props.url}
+                        name={this.props.name}
+                        time={this.props.time}
+                        user={this.props.user}
+                        language={this.props.language}
+                        stars={this.props.stars}
+                        open_issues={this.props.open_issues}
+                        forks={this.props.forks}
+                        avatar={this.props.avatar}
+                    />
                 </div>
 
             </div>
