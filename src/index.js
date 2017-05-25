@@ -12,6 +12,8 @@ import MainPage from './components/MainPage';
 import UserRepo from './components/UserRepo';
 import reducer from './reducers/index.reducer';
 import 'bulma/css/bulma.css';
+import 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 import './css/main.css';
 import './css/font-awesome.css';
 

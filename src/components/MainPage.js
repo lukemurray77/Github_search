@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateSearchInput, fetchAllRepos } from '../actions/search-repos';
 import ReposList from './ReposList';
+import {Button} from 'react-bootstrap';
 
 
 class MainPage extends Component {
@@ -23,7 +24,10 @@ class MainPage extends Component {
                             onChange={this.handleChange}
                             value={this.props.searchText}
                         />
-                        <input id='button' className="searchButton" type='submit' value='Search' />
+                        <p></p>
+                        <Button id='button' className="primary" bsStyle="primary" type='submit' value='Search'>
+                            GO
+                        </Button>
                     </div>
 
                 </form>

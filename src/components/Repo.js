@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 import moment from 'moment';
-import { modalClose, modalOpen } from '../actions/modal-open';
-import Modal from 'react-modal';
+import InsideModal from './InsideModal';
 
 class Repo extends Component {
     constructor(props) {
-        super(props)
-        this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
+        super(props);
     }
     render() {
         const newDate = moment(new Date());
@@ -30,40 +26,32 @@ class Repo extends Component {
                 <div className="column">
                     <p>{this.props.language}</p>
                     {stars}
-                    <button onClick={this.handleOpenModal}>More Info</button>
-                    <Modal
-                        isOpen={this.props.isOpen}
-                    >
-                        <button onClick={this.handleCloseModal}>Close Modal</button>
-                    </Modal>
+                    <InsideModal />
                 </div>
 
             </div>
         );
     }
-    handleOpenModal() {
-        this.props.openModal();
-    }
-    handleCloseModal() {
-        this.props.closeModal();
-    }
 }
 
-function mapStateToProps(state) {
-    return {
-        isOpen: state.modalOpen.isOpen
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return {
-        openModal: function () {
-            dispatch(modalOpen());
-        },
-        closeModal: function () {
-            dispatch(modalClose());
-        }
-    };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Repo);
+export default Repo;
+
+/*
+<button onClick={this.handleOpenModal}>More Info</button>
+                    <Modal isOpen={this.props.isOpen}>
+                        <InsideModal
+                            description={this.props.description}
+                            url={this.props.url}
+                            name={this.props.name}
+                            time={this.props.time}
+                            user={this.props.user}
+                            language={this.props.language}
+                            stars={this.props.stars}
+                            open_issues={this.props.open_issues}
+                            forks={this.props.forks}
+                            avatar={this.props.avatar}
+                        />
+                        <button onClick={this.handleCloseModal}>Close Modal</button>
+                    </Modal>*/

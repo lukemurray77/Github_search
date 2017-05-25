@@ -25,6 +25,9 @@ class ReposList extends Component {
                                     user={repo.owner.login}
                                     language={repo.language}
                                     stars={repo.stargazers_count}
+                                    open_issues={repo.open_issues}
+                                    forks={repo.forks}
+                                    avatar={repo.owner.avatar_url}
                                 />
                         );
                     })}

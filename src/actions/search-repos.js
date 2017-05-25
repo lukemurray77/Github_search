@@ -15,7 +15,6 @@ export function fetchAllRepos(searchText) {
         axios
             .get(`${ROOT}/search/repositories?q=${searchText}&sort=stars&order=desc`)
             .then(res => {
-                console.log(res.data.items)
                 dispatch(fetchReposSuccess(res.data));
             })
             .catch(err => {
